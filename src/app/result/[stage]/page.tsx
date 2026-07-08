@@ -50,6 +50,14 @@ export default function ResultStagePage({ params }: { params: Promise<{ stage: s
     router.push('/quiz/1');
   };
 
+  const handleShareX = () => {
+    if (!result) return;
+    const shareUrl = 'https://love-queen-quiz.vercel.app/';
+    const text = `私の恋愛タイプは「${result.queen.name}」でした${result.queen.emoji}\nマッチ度${result.confidence}%\n\n#どの王妃 #恋愛タイプ診断`;
+    const intent = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`;
+    window.open(intent, 'share-x', 'width=600,height=500,noopener');
+  };
+
   if (!result) {
     return (
       <main className="min-h-dvh flex items-center justify-center bg-gradient-to-b from-[#24101f] via-[#3d0f2b] to-[#1f0a1f]">
@@ -228,6 +236,15 @@ export default function ResultStagePage({ params }: { params: Promise<{ stage: s
 
         {/* Actions */}
         <div className="space-y-3">
+          <button
+            onClick={handleShareX}
+            className="w-full py-4 rounded-2xl border border-amber-400/30 bg-black text-white font-bold text-sm active:scale-95 transition-transform flex items-center justify-center gap-2"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+            Xで結果をシェアする
+          </button>
           <button
             onClick={handleRestart}
             className="block w-full py-4 text-center rounded-2xl border-2 border-amber-400/40 text-amber-200 font-bold text-sm active:scale-95 transition-transform bg-black/20"
