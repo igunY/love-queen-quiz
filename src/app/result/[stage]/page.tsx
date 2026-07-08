@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { diagnose, type DiagnosisResult } from '@/lib/diagnose';
 import { buildDeepProfile } from '@/lib/deepProfile';
 import { loadSession, clearSession } from '@/lib/session';
+import AdMaxSlot from '@/components/AdMaxSlot';
 
 const QueenRadarChart = dynamic(() => import('@/components/QueenRadarChart'), {
   ssr: false,
@@ -255,6 +256,8 @@ export default function ResultStagePage({ params }: { params: Promise<{ stage: s
             トップに戻る
           </Link>
         </div>
+
+        <AdMaxSlot />
 
         <p className="text-xs text-amber-100/30 text-center">
           ※ 本診断はエンターテインメント目的です。
