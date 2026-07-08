@@ -1,65 +1,85 @@
-import Image from "next/image";
+import Link from 'next/link';
 
-export default function Home() {
+export default function TopPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-dvh flex flex-col items-center justify-between bg-gradient-to-b from-[#24101f] via-[#3d0f2b] to-[#1f0a1f] px-4 py-10 relative overflow-hidden">
+      {/* Subtle jewel glow accents */}
+      <div className="pointer-events-none absolute -top-24 -left-16 w-72 h-72 rounded-full bg-fuchsia-600/20 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -right-16 w-72 h-72 rounded-full bg-amber-400/10 blur-3xl" />
+
+      {/* Hero */}
+      <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto w-full gap-6 relative">
+        {/* Crown decoration */}
+        <div className="text-6xl mb-2 drop-shadow-[0_0_12px_rgba(212,175,55,0.6)]">👑</div>
+
+        <div className="space-y-2">
+          <p className="text-xs tracking-[0.25em] text-amber-300/80 font-medium uppercase">
+            Love Psychology Test
           </p>
+          <h1 className="text-2xl font-bold leading-snug text-gold-gradient">
+            あなたの恋愛タイプは
+            <br />
+            <span className="text-3xl">どの王妃</span>
+            ？
+          </h1>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <p className="text-sm leading-relaxed text-rose-100/80">
+          LINEの既読、合コン、休日デート——
+          <br />
+          現代のリアルな恋愛シチュ30問に答えると
+          <br />
+          <span className="font-semibold text-amber-200">ヨーロッパ王室の華やかな王妃</span>の
+          <br />
+          誰かに着地します。
+        </p>
+
+        {/* Queen preview */}
+        <div className="flex gap-3 text-3xl my-1">
+          {['🌹', '🦋', '👑', '💐', '💎', '🔥'].map((e, i) => (
+            <span
+              key={i}
+              className="opacity-70 hover:opacity-100 transition-opacity drop-shadow"
+            >
+              {e}
+            </span>
+          ))}
         </div>
-      </main>
-    </div>
+
+        <div className="w-full space-y-3 mt-2">
+          <Link
+            href="/quiz"
+            className="block w-full py-4 px-6 bg-gradient-to-r from-[#9c7a2e] via-[#f4e2a1] to-[#9c7a2e] text-[#2a0f14] text-center rounded-2xl font-bold text-lg shadow-lg shadow-black/40 border border-amber-200/50 active:scale-95 transition-transform"
+          >
+            診断をはじめる
+          </Link>
+          <p className="text-xs text-amber-200/60">全30問・すべて無料・約5分</p>
+        </div>
+
+        {/* Feature list */}
+        <div className="w-full grid grid-cols-3 gap-2 mt-2">
+          {[
+            { icon: '✨', text: '12人の王妃' },
+            { icon: '📊', text: '5軸分析' },
+            { icon: '🆓', text: '30問すべて無料' },
+          ].map(({ icon, text }) => (
+            <div
+              key={text}
+              className="bg-black/30 backdrop-blur-sm rounded-xl py-3 px-2 text-center border border-amber-400/30"
+            >
+              <div className="text-xl mb-1">{icon}</div>
+              <p className="text-xs text-amber-100/90 font-medium">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="mt-8 text-center relative">
+        <p className="text-xs text-rose-200/40">
+          ※ 本診断はエンターテインメント目的です。医学的・心理学的な診断ではありません。
+        </p>
+      </footer>
+    </main>
   );
 }

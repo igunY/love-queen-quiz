@@ -1,6 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# あなたはどの王妃？恋愛タイプ診断
 
-## Getting Started
+現代のリアルな恋愛シチュ10問に答えると、ヨーロッパ王室の華やかな王妃（12人）のうち1人に着地する女性向け心理テスト診断アプリです。
+
+## 起動方法
+
+```bash
+npm install
+npm run dev
+```
+
+ブラウザで [http://localhost:3000](http://localhost:3000) を開く。
+
+## 画面構成
+
+| パス | 内容 |
+|------|------|
+| `/` | トップ（サービス紹介 + 診断開始ボタン） |
+| `/quiz` | 質問画面（10問・1問ずつ・進捗バー） |
+| `/result` | 結果画面（王妃名・説明・5軸レーダーチャート） |
+
+## 技術スタック
+
+- Next.js 15 (App Router) + TypeScript
+- Tailwind CSS
+- Recharts（レーダーチャート）
+- 状態管理: クライアントのみ（localStorage）
+
+## ディレクトリ構成
+
+```
+src/
+├── app/
+│   ├── page.tsx        # トップ
+│   ├── quiz/page.tsx   # 質問画面
+│   └── result/page.tsx # 結果画面
+├── components/
+│   └── QueenRadarChart.tsx
+├── data/
+│   ├── questions.ts    # 10問データ（5軸 × 2問）
+│   └── queens.ts       # 12人の王妃データ＋説明文
+└── lib/
+    └── diagnose.ts     # 純粋関数：スコア集計・ユークリッド距離・着地判定
+```
+
+## 診断ロジック
+
+5軸（情熱/依存/直感/直球/尽くされ）を各 `-4 〜 +4` で集計し、12人の王妃の軸ベクトルとのユークリッド距離が最小の王妃に着地します。
+ロジックは `lib/diagnose.ts` に純粋関数として独立しており、ステージ2以降の追加に対応できる設計です。
+
+---
+
+## (Original Next.js README)
 
 First, run the development server:
 
