@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import AdMaxSlot from '@/components/AdMaxSlot';
 
 export default function TopPage() {
   return (
@@ -75,7 +76,8 @@ export default function TopPage() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-8 text-center relative">
+      <footer className="mt-8 w-full max-w-sm mx-auto text-center relative">
+        <AdMaxSlot className="mb-4" />
         <p className="text-xs text-rose-200/40">
           ※ 本診断はエンターテインメント目的です。医学的・心理学的な診断ではありません。
         </p>
